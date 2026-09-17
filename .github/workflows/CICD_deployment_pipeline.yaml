@@ -40,6 +40,13 @@ jobs:
             - name: Find latest files for Deployment and do the deployment
               run: |
                    changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.sql$' )
+                   
+                   if [ -z $changed_files]
+                   then
+                      echo "No SQL files detected"
+                      exit 0
+                   fi
+                   
                    for i in $changed_files
                    do
                      snow sql -c cicd -f "$i"

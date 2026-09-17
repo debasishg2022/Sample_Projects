@@ -1,1 +1,1 @@
-create table employees (employee_id number, employee_name varchar);
+create table employees (employee_id number, employee_name varchar, employee_age number);
