@@ -31,6 +31,8 @@ jobs:
                     authenticator = "${{ secrets.AUTHENTICATOR }}"
                     
                     EOF
+                    
+                    chmod 600 ~/.snowflake/config.toml
             - name: test snow connection
               run: snow connection test -c cicd
             - name: Find latest files for Deployment and do the deployment
